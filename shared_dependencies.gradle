@@ -1,0 +1,22 @@
+dependencies {
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    // Image
+    implementation libs.circleimageview
+    implementation libs.picasso
+
+    // Livedata
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    api libs.androidx.lifecycle.livedata.ktx
+
+    // Koin
+    implementation libs.koin.android
+
+    // Datastore
+    implementation libs.androidx.datastore.preferences
+}

@@ -1,4 +1,26 @@
 <resources>
-    <string name="app_name">MyGithubApp</string>
+    <string name="app_name">Github</string>
     <string name="title_favorite">Favorite</string>
+    <string name="label_detail">Detail User</string>
+    <string name="label_repository">%s\nRepository</string>
+    <string name="label_followers">%s\nFollowers</string>
+    <string name="label_following">%s\nFollowing</string>
+    <string name="label_search">Search</string>
+    <string name="tabs_followers">Followers</string>
+    <string name="tabs_following">Following</string>
+    <string name="label_not_found">Data is Empty</string>
+    <string name="label_reminder_off">Reminder set OFF</string>
+    <string name="label_reminder_on">Reminder set ON</string>
+    <string name="label_notify">Find your favorite user now</string>
+    <string name="label_favorite">Favorite User</string>
+    <string name="label_reminder">Reminder</string>
+    <string name="menu_language">Language Setting</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_reminder">Reminder</string>
+    <string name="label_theme">Dark Mode</string>
+    <string name="message_exit_app">Press the back button again to exit</string>
+    <string name="search">Search</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
 </resources>
