@@ -1,0 +1,25 @@
+<resources> <string name="app_name">Github</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="label_detail">Detail Pengguna</string>
+    <string name="label_repository">%s\nRepositori</string>
+    <string name="label_followers">%s\nPengikut</string>
+    <string name="label_following">%s\nMengikuti</string>
+    <string name="label_search">Search</string>
+    <string name="tabs_followers">Pengikut</string>
+    <string name="tabs_following">Mengikuti</string>
+    <string name="label_not_found">Data masih kosong</string>
+    <string name="label_reminder_off">Pengingat dimatikan</string>
+    <string name="label_reminder_on">Pengingat dihidupkan</string>
+    <string name="label_notify">Temukan pengguna favorit kamu sekarang</string>
+    <string name="label_favorite">Pengguna Favorit</string>
+    <string name="label_reminder">Pengingat</string>
+    <string name="menu_language">Pengaturan Bahasa</string>
+    <string name="menu_favorite">Favorit</string>
+    <string name="menu_reminder">Pengingat</string>
+    <string name="label_theme">Mode Gelap</string>
+    <string name="message_exit_app">Tekan tombol kembali lagi untuk keluar</string>
+    <string name="search">Pencarian</string>
+    <string name="set_reminder">Set Pengingat</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+</resources>
