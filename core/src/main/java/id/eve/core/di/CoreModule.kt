@@ -9,6 +9,9 @@ import id.eve.core.data.remote.RemoteDataSource
 import id.eve.core.data.remote.network.ApiService
 import id.eve.core.domain.repository.UserRepository
 import id.eve.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,16 +26,26 @@ val databaseModule = module {
         get<UserDatabase>().userDao()
     }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("eve".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             UserDatabase::class.java,
             "user.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val networkModule = module {
     single {
+        val hostname = "api.github.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/GyhWVHsOXNZc6tGTNd15kXF9YD0kEZaGxYn6MUva5jY=")
+            .add(hostname, "sha256/Wec45nQiFwKvHtuHxSAMGkt19k+uPSw9JlEkxhvYPHk=")
+            .add(hostname, "sha256/lmo8/KPXoMsxI+J9hY+ibNm2r0IYChmOsF9BxD74PVc=")
+            .build()
         val interceptor =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
@@ -42,14 +55,14 @@ val networkModule = module {
             .writeTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
-            .apply {
-                addInterceptor(Interceptor { chain ->
-                    val builder = chain.request().newBuilder()
-                        .addHeader("Authorization", BuildConfig.MY_TOKEN)
-                        .header("Content-Type", "application/json")
-                    return@Interceptor chain.proceed(builder.build())
-                })
-            }.build()
+            .addInterceptor { chain ->
+                val builder = chain.request().newBuilder()
+                    .addHeader("Authorization", BuildConfig.MY_TOKEN)
+                    .header("Content-Type", "application/json")
+                chain.proceed(builder.build())
+            }
+            .certificatePinner(certificatePinner)
+            .build()
     }
     single {
         Retrofit.Builder()
