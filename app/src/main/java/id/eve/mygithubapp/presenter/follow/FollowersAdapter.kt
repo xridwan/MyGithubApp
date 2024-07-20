@@ -1,4 +1,4 @@
-package id.eve.mygithubapp.presenter.follower
+package id.eve.mygithubapp.presenter.follow
 
 import android.view.LayoutInflater
 import android.view.View

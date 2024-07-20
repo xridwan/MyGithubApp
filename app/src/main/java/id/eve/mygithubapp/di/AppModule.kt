@@ -1,4 +1,4 @@
-package com.xridwan.mygithub.di
+package id.eve.mygithubapp.di
 
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.SharedPreferencesMigration
@@ -12,8 +12,7 @@ import id.eve.core.domain.usecase.UserUseCase
 import id.eve.mygithubapp.preference.ReminderPreferenceImpl
 import id.eve.mygithubapp.preference.ThemePreferencesImpl
 import id.eve.mygithubapp.presenter.detail.DetailViewModel
-import id.eve.mygithubapp.presenter.follower.FollowersViewModel
-import id.eve.mygithubapp.presenter.following.FollowingViewModel
+import id.eve.mygithubapp.presenter.follow.FollowViewModel
 import id.eve.mygithubapp.presenter.main.MainViewModel
 import id.eve.mygithubapp.presenter.main.ThemeViewModel
 import id.eve.mygithubapp.presenter.other.ReminderViewModel
@@ -52,8 +51,7 @@ val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { ThemeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
-    viewModel { FollowersViewModel(get()) }
-    viewModel { FollowingViewModel(get()) }
+    viewModel { FollowViewModel(get()) }
     viewModel { ReminderViewModel(get()) }
 }
 
