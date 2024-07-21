@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'kotlin-parcelize'
 }
 
@@ -42,9 +42,9 @@ android {
         viewBinding true
         buildConfig true
     }
-    kapt {
-        correctErrorTypes true
-    }
+//    kapt {
+//        correctErrorTypes true
+//    }
     dynamicFeatures = [':favorite']
 }
 
